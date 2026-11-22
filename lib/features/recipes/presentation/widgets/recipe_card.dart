@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
-import '../../../recipes/models/recipe.dart';
+import '../../../favorites/presentation/widgets/favorite_button.dart';
+import '../../models/recipe.dart';
 
 /// Image card of one recipe. It only knows the [Recipe] it shows and reports
-/// taps through [onTap], so it can be reused on any screen.
+/// taps through [onTap], so it can be reused on any screen (Home, Favorites).
 class RecipeCard extends StatelessWidget {
   const RecipeCard({super.key, required this.recipe, required this.onTap});
 
@@ -44,6 +45,11 @@ class RecipeCard extends StatelessWidget {
                 ),
               ),
               Positioned(
+                top: AppSpacing.sm,
+                right: AppSpacing.sm,
+                child: FavoriteButton(recipeId: recipe.id),
+              ),
+              Positioned(
                 left: AppSpacing.md,
                 right: AppSpacing.md,
                 bottom: AppSpacing.md,
@@ -57,7 +63,7 @@ class RecipeCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${recipe.category} / ${recipe.minutes} mins',
+                      '${recipe.category} / ${recipe.area}',
                       style: AppTextStyles.caption.copyWith(
                         color: Colors.white70,
                       ),

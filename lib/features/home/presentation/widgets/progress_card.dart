@@ -36,7 +36,11 @@ class ProgressCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("Today's Progress", style: AppTextStyles.heading),
+              // Expanded: on narrow screens the title wraps instead of
+              // overflowing into "View more".
+              const Expanded(
+                child: Text("Today's Progress", style: AppTextStyles.heading),
+              ),
               Text(
                 'View more',
                 style: AppTextStyles.body.copyWith(
